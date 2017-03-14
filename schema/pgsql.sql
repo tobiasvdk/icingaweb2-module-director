@@ -1162,6 +1162,7 @@ CREATE TABLE icinga_usergroup (
   object_type enum_object_type_all NOT NULL,
   disabled enum_boolean NOT NULL DEFAULT 'n',
   display_name character varying(255) DEFAULT NULL,
+  zone_id integer DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -1775,4 +1776,4 @@ CREATE INDEX user_resolved_var_schecksum ON icinga_user_resolved_var (checksum);
 
 INSERT INTO director_schema_migration
   (schema_version, migration_time)
-  VALUES (128, NOW());
+  VALUES (129, NOW());

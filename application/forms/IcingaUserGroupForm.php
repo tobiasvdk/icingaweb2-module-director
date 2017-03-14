@@ -17,8 +17,7 @@ class IcingaUserGroupForm extends DirectorObjectForm
         ));
 
         $this->addGroupDisplayNameElement()
-             // TODO: re-add this once we have zone_id in groups tables
-             // ->addZoneElements()
+             ->addZoneElements()
              ->groupMainProperties()
              ->setButtons();
     }

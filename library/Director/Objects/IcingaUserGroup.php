@@ -14,10 +14,21 @@ class IcingaUserGroup extends IcingaObjectGroup
         'object_type'   => null,
         'disabled'      => 'n',
         'display_name'  => null,
+        'zone_id'       => null,
+    );
+
+    protected $relations = array(
+        'zone' => 'IcingaZone',
     );
 
     public function getRenderingZone(IcingaConfig $config = null)
     {
-        return $this->connection->getMasterZoneName();
+        if ($this->prefersGlobalZone()) {
+            return $this->connection->getDefaultGlobalZoneName();
+        }
+
+        $zone = parent::getRenderingZone($config);
+
+        return $zone;
     }
 }

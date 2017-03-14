@@ -957,6 +957,7 @@ CREATE TABLE icinga_usergroup (
   object_type ENUM('object', 'template') NOT NULL,
   disabled ENUM('y', 'n') NOT NULL DEFAULT 'n',
   display_name VARCHAR(255) DEFAULT NULL,
+  zone_id INT(10) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX object_name (object_name),
   KEY search_idx (display_name)
@@ -1508,4 +1509,4 @@ CREATE TABLE icinga_user_resolved_var (
 
 INSERT INTO director_schema_migration
   (schema_version, migration_time)
-  VALUES (130, NOW());
+  VALUES (131, NOW());

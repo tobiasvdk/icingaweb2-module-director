@@ -17,6 +17,7 @@ class IcingaUserGroupTable extends QuickTable
             'id'                    => 'ug.id',
             'usergroup'             => 'ug.object_name',
             'display_name'          => 'ug.display_name',
+            'zone'                  => 'z.object_name',
         );
     }
 
@@ -38,6 +39,10 @@ class IcingaUserGroupTable extends QuickTable
     {
         return $this->db()->select()->from(
             array('ug' => 'icinga_usergroup'),
+            array()
+        )->joinLeft(
+            array('z' => 'icinga_zone'),
+            'ug.zone_id = z.id',
             array()
         );
     }
